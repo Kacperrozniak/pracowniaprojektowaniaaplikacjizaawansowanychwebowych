@@ -1,0 +1,38 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="wyszukaj produkt" Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,10" Padding="5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="szukaj EAN/nazwa:" VerticalAlignment="Center"/>
+                <TextBox x:Name="szukaj" Width="250" Height="24" TextChanged="szukajj" VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </GroupBox>
+
+        <DataGrid x:Name="Produkty" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="EAN" Binding="{Binding ean}" Width="120"/>
+                <DataGridTextColumn Header="nazwa" Binding="{Binding nazwa}" Width="*"/>
+                <DataGridTextColumn Header="kategoria" Binding="{Binding kategoria}" Width="110"/>
+                <DataGridTextColumn Header="sektor" Binding="{Binding sektor}" Width="60"/>
+                <DataGridTextColumn Header="regał" Binding="{Binding regal}" Width="60"/>
+                <DataGridTextColumn Header="półka" Binding="{Binding polka}" Width="60"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StatusBar Grid.Row="2" Margin="0,5,0,0">
+            <StatusBarItem x:Name="licznik" Content="Liczba produktów: 0"/>
+        </StatusBar>
+    </Grid>
+</Window>
